@@ -40,7 +40,7 @@ end
 
 function suspend_command()
   exit_screen_hide()
-  awful.spawn.with_shell(apps.default.lock .. ' & systemctl suspend')
+  awful.spawn.with_shell(apps.default.lock .. ' & loginctl suspend')
 end
 function exit_command()
   _G.awesome.quit()
@@ -50,11 +50,11 @@ function lock_command()
   awful.spawn.with_shell('sleep 1 && ' .. apps.default.lock)
 end
 function poweroff_command()
-  awful.spawn.with_shell('poweroff')
+  awful.spawn.with_shell('loginctl poweroff')
   awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 function reboot_command()
-  awful.spawn.with_shell('reboot')
+  awful.spawn.with_shell('loginctl reboot')
   awful.keygrabber.stop(_G.exit_screen_grabber)
 end
 
